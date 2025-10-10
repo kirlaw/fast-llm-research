@@ -4,14 +4,14 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
-model_id = "E:/Qwen3-1.7B"
+model_name = "E:/Qwen3-1.7B"
 
 # 加载 tokenizer
-tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
 
 # 加载模型（低显存优化）
 model = AutoModelForCausalLM.from_pretrained(
-    model_id,
+    model_name,
     device_map="auto",         # 自动选择 GPU
     dtype=torch.float16, # 半精度
     #load_in_8bit=True          # 使用 bitsandbytes 8bit 量化
